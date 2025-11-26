@@ -1,17 +1,27 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\QROptions;
 
 class QRController extends Controller
 {
     public function show()
     {
-        // توليد QR code مع رابط صفحة التسجيل
-        $qr = QrCode::size(300)->generate(url('/record'));
-        return view('qr', compact('qr'));
+        $url = url('/record');
+
+        $options = new QROptions([
+            'outputType' => QRCode::OUTPUT_IMAGE_PNG,
+            'eccLevel' => QRCode::ECC_L,
+            'scale' => 5,
+        ]);
+
+        $qrcode = (new QRCode($options))->render($url);
+
+        return view('qr', compact('qrcode'));
     }
 }
+
 
