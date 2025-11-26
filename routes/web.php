@@ -12,3 +12,7 @@ Route::get('/record', [VoiceController::class, 'showRecordPage']);
 
 // لمعالجة رفع الصوت
 Route::post('/api/upload-voice', [VoiceController::class, 'uploadVoice']);
+
+Route::get('/', function () {
+    return view('qr');
+});
