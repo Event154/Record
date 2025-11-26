@@ -1,0 +1,6 @@
+[build]
+builder = "NIXPACKS"
+
+[build.nixpacks]
+phases = ["php", "node"]
+
