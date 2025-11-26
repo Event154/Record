@@ -1,8 +1,13 @@
+# =============================
+# 🚀 Railway Laravel Nixpacks
+# =============================
+
 [build]
 builder = "NIXPACKS"
-version = "1"
-
+version = "2"   # أي تغيير هنا = Clear Cache إجباري
 
 [build.nixpacks]
 phases = ["php", "node"]
 
+[deploy]
+startCommand = "php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=${PORT}"
