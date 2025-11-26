@@ -9,5 +9,7 @@ class VoiceRecord extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['file_path'];
+    protected $fillable = [
+        'file_path',
+    ];
 }
